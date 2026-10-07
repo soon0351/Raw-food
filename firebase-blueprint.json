@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order for Saengsik products",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Unique generated order identifier"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Full name of the ordering customer"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact telephone or mobile phone number"
+        },
+        "address": {
+          "type": "string",
+          "description": "Shipping street address"
+        },
+        "detailAddress": {
+          "type": "string",
+          "description": "Shipping detail unit or apartment number"
+        },
+        "requestNote": {
+          "type": "string",
+          "description": "Delivery request memo"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Selected payment method"
+        },
+        "optionId": {
+          "type": "string",
+          "description": "Product bundle package ID"
+        },
+        "optionTitle": {
+          "type": "string",
+          "description": "Product bundle title"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity of boxes ordered"
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "Total payment price in KRW"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current order fulfillment status"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the order was submitted"
+        }
+      },
+      "required": [
+        "orderNumber",
+        "customerName",
+        "phone",
+        "address",
+        "paymentMethod",
+        "quantity",
+        "totalPrice",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "#/entities/Order"
+      },
+      "description": "Stores all incoming customer orders for fulfillment and merchant administration"
+    }
+  }
+}
